@@ -11,6 +11,10 @@ class EntriesController < ApplicationController
     @entry = Entry.new
   end
 
+  def edit
+    @entry = Entry.find(params[:id])
+  end
+
   def create
     # render plain: params[:entry].inspect
     @entry = Entry.new(required_params)
@@ -18,6 +22,15 @@ class EntriesController < ApplicationController
       redirect_to @entry
     else
       render 'new'
+    end
+  end
+
+  def update
+    @entry = Entry.find(params[:id])
+    if @entry.update(required_params)
+      redirect_to @entry
+    else
+      render 'edit'
     end
   end
 
