@@ -1,4 +1,9 @@
 <p><strong>Title: <%= @entry.title %></strong></p>
 <p><%= @entry.text %></p>
 
+<%= render @entry.comments %>
+
+<h4>Add Comments</h4>
+<%= render 'comments/form' %>
+
 <%= link_to 'Back', entries_path %>

@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-get 'entries/index'
+  get 'entries/index'
 
-  resources :entries
+    resources :entries do
+      resources :comments
+    end
 
-
-root 'entries#index'
+  root 'entries#index'
 end
