@@ -16,7 +16,6 @@ class EntriesController < ApplicationController
   end
 
   def create
-    # render plain: params[:entry].inspect
     @entry = Entry.new(required_params)
     if @entry.save
       redirect_to @entry
@@ -32,6 +31,13 @@ class EntriesController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    @entry = Entry.find(params[:id])
+    @entry.destroy
+
+    redirect_to entries_path
   end
 
   private
